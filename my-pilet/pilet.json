@@ -1,0 +1,6 @@
+{
+  "name": "my-pilet",
+  "version": "1.1.0",
+  "description": "My sample Pilet",
+  "main": "./src/index.tsx"
+}
