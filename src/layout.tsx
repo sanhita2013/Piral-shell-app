@@ -48,7 +48,7 @@ const defaultMenuItems = (
   <>
     <MenuItem type="general" meta={{}}>
       <Link className="nav-link text-dark" to="/not-found">
-        Not Found
+        Here comes dropdown
       </Link>
     </MenuItem>
   </>
