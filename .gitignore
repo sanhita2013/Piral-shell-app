@@ -1,0 +1,4 @@
+node_modules
+dist
+./my-pilet/dist
+./my-pilet/node_modules
