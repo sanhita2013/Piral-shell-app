@@ -7,13 +7,13 @@ const Page = React.lazy(() => import('./Page'));
 export function setup(app: PiletApi) {
   app.registerPage('/page', Page);
 
-  app.showNotification('Hello from Pilet 2!', {
+  app.showNotification('Hello from Pilet v2!', {
     autoClose: 2000,
   });
 
   app.registerMenu(() => (
     <>
-      <Link to="/page">Pilet v2</Link>
+      <Link to="/page">Go to Pilet v2</Link>
       
     </>
   ));
