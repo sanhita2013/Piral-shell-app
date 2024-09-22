@@ -1,4 +1,7 @@
 node_modules
 dist
-./my-pilet/dist
-./my-pilet/node_modules
+./my-pilet-v1/dist
+./my-pilet-v1/node_modules
+
+./my-pilet-v2/dist
+./my-pilet-v2/node_modules
