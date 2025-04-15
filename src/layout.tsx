@@ -1,6 +1,9 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import { ComponentsState, ErrorComponentsState, Menu, Notifications, SwitchErrorInfo, MenuItemProps } from 'piral';
+import {useGlobalState } from 'piral-core';
 
 const MenuItem: React.FC<MenuItemProps> = ({ children }) => <li className="nav-item">{children}</li>;
 
@@ -44,12 +47,48 @@ const defaultTiles = (
   </>
 );
 
+const Dropdown = () => {
+  const [localSelectedOption, setLocalSelectedOption] = useState('');
+  const globalState = useGlobalState(); // Get the whole global state
+  const setGlobalState = globalState[1]; // Get the setter function
+
+  const selectedOption = globalState[0]?.selectedOption; // Access selectedOption safely
+
+  const handleChange = (event) => {
+    const value = event.target.value;
+    setLocalSelectedOption(value);
+    setGlobalState((prev) => ({
+      ...prev,
+      selectedOption: value || '',
+    }));
+  };
+
+  return (
+    <div>
+      {/* <label htmlFor="options">Select Branch:</label> */}
+      <select id="options"  value={localSelectedOption} onChange={handleChange}>
+        <option value="">--Select Branch--</option>
+        <option value="kolt">Kolkata</option>
+        <option value="bngl">Bangalore</option>
+        <option value="pune">Pune</option>
+      </select>
+      {/* {selectedOption && <p>You selected: {selectedOption}</p>} */}
+    </div>
+  );
+};
+
+export default Dropdown;
+
+
 const defaultMenuItems = (
   <>
     <MenuItem type="general" meta={{}}>
-      <Link className="nav-link text-dark" to="/not-found">
-        Not Found
-      </Link>
+      {/* <Link className="nav-link text-dark" to="/not-found">
+        Here comes dropdown
+      </Link> */}
+      <div>
+        <Dropdown />
+      </div>
     </MenuItem>
   </>
 );
